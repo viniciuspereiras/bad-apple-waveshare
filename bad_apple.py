@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding:utf-8 -*-
 import sys
 import os
 import numpy as np
@@ -14,9 +12,6 @@ import os
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 
-
-
-
 frames_list = list(np.sort(np.array(os.listdir(picdir))))
 print(len(frames_list))
 for frame in frames_list:
@@ -27,16 +22,11 @@ for frame in frames_list:
     except:
         continue
 print(len(frames_list))
-#frames_list = os.listdir(picdir)
 try:
 
     epd = epd2in13_V3.EPD()
     epd.init()
     epd.Clear(0xFF)
-
-    # Drawing on the image
-    # font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
-    # font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
     image1 = Image.new('1', (epd.height, epd.width), 255)
     epd.displayPartBaseImage(epd.getbuffer(image1))
